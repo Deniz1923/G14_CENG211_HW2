@@ -1,24 +1,8 @@
+import java.io.IOException;
+
 public class ScholarshipEvalSystem {
-    public static void main(String[] args){
-        System.out.println("Seks");
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+    public static void main(String[] args) throws IOException {
+        FileIO io = new FileIO("ScholarshipApplications.csv");
 
     }
 }
