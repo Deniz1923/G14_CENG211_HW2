@@ -12,7 +12,7 @@ public class FileIO {
         this.applicationsData = loadApplications(applicationsPath);
     }
 
-    //Reading the applications file and writing it to an arraylist of arraylists since every row is not the same size
+    // Reading the applications file and writing it to an Arraylist Matrix as every row is not the same size
     private ArrayList<ArrayList<String>> loadApplications(String applicationsPath) throws IOException {
         //Delimiter set for split()
         String delimiter = ",";
