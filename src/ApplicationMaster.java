@@ -1,17 +1,31 @@
-import java.lang.reflect.Array;
 import java.util.ArrayList;
 
 public class ApplicationMaster {
     private final ArrayList<Applicant> applicants;
+
     public ApplicationMaster(ArrayList<ArrayList<String>> rawInput){
         this.applicants = new ArrayList<>();
         processRawInput(rawInput);
     }
 
     private void processRawInput(ArrayList<ArrayList<String>> rawInput){
-        //First string value
-        for(ArrayList<String> list : rawInput){
-            String id = list.get(1);
+        //Looking for 'A' values to generate Applicant object for each applicant
+        for(ArrayList<String>  information: rawInput){
+            //Type means the type of information in the line, A P D T I
+            String type = information.get(0);
+            if(type.equals("A")){
+                //A line : type,id,name,gpa,income
+                String id = information.get(1);
+                String name = information.get(2);
+                //using parse to be returned the primitive types(double,int)
+                //valueof for Object types (Double,Integer)
+                double gpa = Double.parseDouble(information.get(3));
+                int income = Integer.parseInt(information.get(4));
+
+                Applicant applicant = new Applicant(id,name,gpa,income);
+                this.applicants.add(applicant);
+            }
+
         }
     }
 }
