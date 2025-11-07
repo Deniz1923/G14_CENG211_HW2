@@ -5,7 +5,7 @@ public class Applicant {
     private String name;
     private double gpa;
     private int familyIncome;
-    private boolean thesisApproved;
+    private boolean transcriptApproval;
 
     ArrayList<Document> documents;
     ArrayList<Publication> publications;
@@ -16,4 +16,5 @@ public class Applicant {
         this.gpa = gpa;
         this.familyIncome = familyIncome;
     }
+
 }
