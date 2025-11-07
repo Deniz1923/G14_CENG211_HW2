@@ -7,14 +7,20 @@ public class Applicant {
     private int familyIncome;
     private boolean transcriptApproval;
 
+    private CourseGrade courseGrade;
     ArrayList<Document> documents;
     ArrayList<Publication> publications;
-    ArrayList<CourseGrade> courses;
     public Applicant(String studentID, String name, double gpa, int familyIncome){
         this.studentID = studentID;
         this.name = name;
         this.gpa = gpa;
         this.familyIncome = familyIncome;
+        this.documents = new ArrayList<>();
+        this.publications = new ArrayList<>();
+    }
+
+    public void setCourseGrade(CourseGrade courseGrade){
+        this.courseGrade = (courseGrade);
     }
 
 }
