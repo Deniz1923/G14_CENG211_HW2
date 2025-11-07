@@ -1,3 +1,5 @@
+import core.FileIO;
+
 import java.io.IOException;
 
 public class ScholarshipEvalSystem {

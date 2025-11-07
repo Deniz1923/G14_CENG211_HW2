@@ -1,3 +1,5 @@
+package core;
+
 public class CourseGrade {
     private char transcriptStatus;
     private double gpa;

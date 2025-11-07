@@ -1,3 +1,5 @@
+package core;
+
 import java.util.ArrayList;
 
 public class Applicant {
@@ -38,12 +40,12 @@ public class Applicant {
         this.dependents = dependents;
     }
 
-    /** Adds a Document object to the list. */
+    /** Adds a misc.Document object to the list. */
     public void addDocument(Document doc) {
         this.documents.add(doc);
     }
 
-    /** Adds a Publication object to the list. */
+    /** Adds a misc.Publication object to the list. */
     public void addPublication(Publication pub) {
         this.publications.add(pub);
     }

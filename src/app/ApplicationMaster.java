@@ -1,3 +1,5 @@
+package app;
+
 import java.util.ArrayList;
 
 public class ApplicationMaster {
@@ -17,7 +19,7 @@ public class ApplicationMaster {
         return null;
     }
     private void processRawInput(ArrayList<ArrayList<String>> rawInput){
-        //Looking for 'A' values to generate Applicant object for each applicant
+        //Looking for 'A' values to generate misc.Applicant object for each applicant
         //otherwise the system will not work for a non-existent applicant object
 
         for(ArrayList<String> information: rawInput){

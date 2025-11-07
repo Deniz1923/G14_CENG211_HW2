@@ -1,3 +1,5 @@
+package core;
+
 public class Document {
     private String documentType;
     private int durationInMonths;

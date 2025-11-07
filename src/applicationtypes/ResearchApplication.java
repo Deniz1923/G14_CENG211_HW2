@@ -1,3 +1,5 @@
+package applicationtypes;
+
 public class ResearchApplication extends Application {
 }
 /*String type = information.get(0);
@@ -11,7 +13,7 @@ public class ResearchApplication extends Application {
                 double gpa = Double.parseDouble(information.get(3));
                 int income = Integer.parseInt(information.get(4));
 
-                Applicant applicant = new Applicant(id,name,income);
+                misc.Applicant applicant = new misc.Applicant(id,name,income);
                 this.applicants.add(applicant);
                 break;
 
