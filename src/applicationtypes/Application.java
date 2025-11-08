@@ -23,4 +23,8 @@ abstract public class Application {
     public String toString() {
         return result.toString();
     }
+
+    public Object getResult() {
+        return null;
+    }
 }

@@ -1,5 +1,8 @@
 package app;
 
+import applicationtypes.Application;
+import core.Applicant;
+
 import java.util.ArrayList;
 
 public class ApplicationMaster {
@@ -85,5 +88,9 @@ public class ApplicationMaster {
                 System.err.println("Error processing '" + type + "' line for ID " + id + ". Skipping.");
             }
         }
+    }
+
+    public ArrayList<Application> createApplications() {
+        return null;
     }
 }
