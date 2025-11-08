@@ -13,8 +13,7 @@ public class CourseGrade {
         return gpa;
     }
 
-    public double getTranscriptStatus(){
+    public char getTranscriptStatus(){
         return transcriptStatus;
     }
-
 }

@@ -1,35 +1,24 @@
 package applicationtypes;
 
+import core.Applicant;
+import core.EvaluationResult;
+import evaluationtypes.ResearchBasedEval;
+
 public class ResearchApplication extends Application {
+
+    public ResearchApplication(Applicant applicant) {
+        super(applicant);
+        this.result = new EvaluationResult(applicant.getStudentID(), applicant.getName(), "Research");
+    }
+
+    @Override
+    public void evaluate() {
+        // First check general requirements
+        if (!passesGeneralChecks()) {
+            return;
+        }
+
+        // Then perform research-specific evaluation
+        ResearchBasedEval.evaluate(applicant, result);
+    }
 }
-/*String type = information.get(0);
-            switch(type){
-                case "A":
-                //A line : type,id,name,gpa,income
-                String id = information.get(1);
-                String name = information.get(2);
-                //using parse to be returned the primitive types(double,int)
-                //value of for Object types (Double,Integer)
-                double gpa = Double.parseDouble(information.get(3));
-                int income = Integer.parseInt(information.get(4));
-
-                misc.Applicant applicant = new misc.Applicant(id,name,income);
-                this.applicants.add(applicant);
-                break;
-
-            case "T":
-                break;
-
-            case "I":
-                break;
-
-            case "D":
-                break;
-
-            case "P":
-                break;
-
-            default:
-                    System.out.println("Unknown prefix for the system.");
-            }
-* */

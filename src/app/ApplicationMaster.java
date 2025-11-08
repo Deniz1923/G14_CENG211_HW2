@@ -1,7 +1,13 @@
 package app;
 
 import applicationtypes.Application;
+import applicationtypes.AcademicApplication;
+import applicationtypes.FinancialApplication;
+import applicationtypes.ResearchApplication;
 import core.Applicant;
+import core.CourseGrade;
+import core.Document;
+import core.Publication;
 
 import java.util.ArrayList;
 
@@ -21,22 +27,18 @@ public class ApplicationMaster {
         }
         return null;
     }
-    private void processRawInput(ArrayList<ArrayList<String>> rawInput){
-        //Looking for 'A' values to generate misc.Applicant object for each applicant
-        //otherwise the system will not work for a non-existent applicant object
 
+    private void processRawInput(ArrayList<ArrayList<String>> rawInput){
+        // First pass: Create all Applicant objects from 'A' lines
         for(ArrayList<String> information: rawInput){
-            //Type means the type of information in the line, A P D T I
             String type = information.get(0);
             try {
                 if (type.equals("A")) {
                     //A line : type,id,name,gpa,income
                     String id = information.get(1);
                     String name = information.get(2);
-                    //using parse to be returned the primitive types(double,int)
-                    //value of for Object types (Double,Integer)
                     double gpa = Double.parseDouble(information.get(3));
-                    int income = Integer.parseInt(information.get(4));
+                    double income = Double.parseDouble(information.get(4));
 
                     Applicant applicant = new Applicant(id, name, income);
                     this.applicants.add(applicant);
@@ -46,42 +48,70 @@ public class ApplicationMaster {
             }
         }
 
+        // Second pass: Process all other information
         for(ArrayList<String> information: rawInput){
             String type = information.get(0);
+
+            if (type.equals("A")) {
+                continue; // Already processed
+            }
+
             String id = information.get(1);
             Applicant applicant = findApplicantByID(id);
+
             if(applicant == null) {
                 continue;
             }
+
             try {
                 switch (type) {
                     case "T":
-                        // findApplicantByID(id) gets id of the applicant and returns the applicant
+                        // Transcript line: T, applicantID, transcriptStatus (Y/N)
+                        // Note: GPA is in the A line, not T line
+                        char status = information.get(2).charAt(0);
+                        double gpa = 0;
 
-                        if (information.get(2).equals("Y")) {
-                            applicant.setTranscriptApproval(true);//convert string "Y" to boolean True
-                        } else if (information.get(2).equals("N")) {
-                            applicant.setTranscriptApproval(false);
-                        } else {
-                            System.out.println("There is a problem with the applicant:" + applicant.getName() + "'s Y/N approval.");
+                        // Get GPA from A line
+                        for (ArrayList<String> aLine : rawInput) {
+                            if (aLine.get(0).equals("A") && aLine.get(1).equals(id)) {
+                                gpa = Double.parseDouble(aLine.get(3));
+                                break;
+                            }
                         }
+
+                        applicant.setCourseGrade(new CourseGrade(status, gpa));
+                        applicant.setTranscriptApproval(status == 'Y');
                         break;
 
                     case "I":
-                        applicant.setFamilyIncome(Double.parseDouble(information.get(2)));
-                        applicant.setDependents(Integer.parseInt(information.get(3)));
-                    break;
+                        // Family info: I, applicantID, familyIncome, dependents
+                        double familyIncome = Double.parseDouble(information.get(2));
+                        int dependents = Integer.parseInt(information.get(3));
+
+                        applicant.setFamilyIncome(familyIncome);
+                        applicant.setDependents(dependents);
+                        break;
 
                     case "D":
+                        // Document: D, applicantID, documentType, durationInMonths
+                        String docType = information.get(2);
+                        int duration = Integer.parseInt(information.get(3));
+
+                        Document doc = new Document(docType, duration);
+                        applicant.addDocument(doc);
                         break;
 
                     case "P":
+                        // Publication: P, applicantID, title, impactFactor
+                        String title = information.get(2);
+                        double impactFactor = Double.parseDouble(information.get(3));
+
+                        Publication pub = new Publication(title, impactFactor);
+                        applicant.addPublication(pub);
                         break;
-                    //Empty since we already processed.
-                    case "A":
-                        break;
+
                     default:
-                        System.out.println("Unknown prefix for the system.");
+                        System.out.println("Unknown prefix for the system: " + type);
                 }
             }
             catch (NumberFormatException | IndexOutOfBoundsException e) {
@@ -91,6 +121,29 @@ public class ApplicationMaster {
     }
 
     public ArrayList<Application> createApplications() {
-        return null;
+        ArrayList<Application> applications = new ArrayList<>();
+
+        for (Applicant applicant : applicants) {
+            String id = applicant.getStudentID();
+            Application app = null;
+
+            // Determine application type based on ID prefix
+            if (id.startsWith("11")) {
+                // Merit-based scholarship
+                app = new AcademicApplication(applicant);
+            } else if (id.startsWith("22")) {
+                // Need-based scholarship
+                app = new FinancialApplication(applicant);
+            } else if (id.startsWith("33")) {
+                // Research grant
+                app = new ResearchApplication(applicant);
+            }
+
+            if (app != null) {
+                applications.add(app);
+            }
+        }
+
+        return applications;
     }
 }

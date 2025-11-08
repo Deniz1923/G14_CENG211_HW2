@@ -11,12 +11,39 @@ abstract public class Application {
         this.applicant = applicant;
     }
 
-    abstract void evaluate();
+    public abstract void evaluate();
 
     protected boolean passesGeneralChecks() {
-        // Check ENR document
+        // Priority order for rejection reasons:
+        // 1. Missing Enrollment Certificate
+        if (!applicant.hasDocument("ENR")) {
+            result.setStatus("Rejected");
+            result.setRejectionReason("Missing Enrollment Certificate");
+            return false;
+        }
+
+        // 2. Missing Transcript
+        if (applicant.getCourseGrade() == null) {
+            result.setStatus("Rejected");
+            result.setRejectionReason("Missing Transcript");
+            return false;
+        }
+
+        // 3. GPA below 2.5
+        if (applicant.getCourseGrade().getGpa() < 2.50) {
+            result.setStatus("Rejected");
+            result.setRejectionReason("GPA below 2.5");
+            return false;
+        }
+
         // Check transcript approval
-        // Check GPA >= 2.5
+        if (!applicant.isTranscriptApproved()) {
+            result.setStatus("Rejected");
+            result.setRejectionReason("Transcript not approved");
+            return false;
+        }
+
+        return true;
     }
 
     @Override
@@ -24,7 +51,7 @@ abstract public class Application {
         return result.toString();
     }
 
-    public Object getResult() {
-        return null;
+    public EvaluationResult getResult() {
+        return result;
     }
 }
