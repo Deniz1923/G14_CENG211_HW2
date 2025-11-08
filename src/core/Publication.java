@@ -1,8 +1,8 @@
 package core;
 
 public class Publication {
-    private String name;
-    private double impactFactor;
+    private final String name;
+    private final double impactFactor;
 
     public Publication(String name, double impactFactor){
         this.name = name;
@@ -12,7 +12,6 @@ public class Publication {
     public String getName(){
         return name;
     }
-
     public double getImpactFactor() {
         return impactFactor;
     }

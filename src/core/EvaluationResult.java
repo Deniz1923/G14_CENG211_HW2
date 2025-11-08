@@ -1,9 +1,9 @@
 package core;
 
 public class EvaluationResult {
-    private String applicantID;
-    private String name;
-    private String scholarshipType; // Merit, Need, Research
+    private final String applicantID;
+    private final String name;
+    private final String scholarshipType; // Merit, Need, Research
     private String status; // Accepted, Rejected
     private String type; // Full, Half
     private String duration; // "2 years", "1 year", "6 months"

@@ -3,7 +3,6 @@ import app.ApplicationMaster;
 import applicationtypes.Application;
 import java.io.IOException;
 import java.util.ArrayList;
-import java.util.Collections;
 import java.util.Comparator;
 
 public class ScholarshipEvalSystem {
@@ -17,7 +16,7 @@ public class ScholarshipEvalSystem {
             app.evaluate();
         }
 
-        Collections.sort(applications, new Comparator<Application>() {
+        applications.sort(new Comparator<>() {
             @Override
             public int compare(Application a1, Application a2) {
                 return a1.getResult().getApplicantID().compareTo(a2.getResult().getApplicantID());

@@ -90,12 +90,4 @@ public class Applicant {
         return false;
     }
 
-    public Document getDocument(String documentType) {
-        for (Document doc : documents) {
-            if (doc.getDocumentType().equals(documentType)) {
-                return doc;
-            }
-        }
-        return null;
-    }
 }
