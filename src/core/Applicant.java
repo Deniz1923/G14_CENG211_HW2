@@ -3,6 +3,7 @@ package core;
 import java.util.ArrayList;
 
 public class Applicant {
+
     private final String studentID;
     private final String name;
     private final double initialIncome;

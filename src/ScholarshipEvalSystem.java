@@ -5,6 +5,7 @@ import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Comparator;
 
+/** Implements Scholarship Evaluation System according to Specifications in the PDF */
 public class ScholarshipEvalSystem {
     public static void main(String[] args) throws IOException {
         FileIO io = new FileIO("ScholarshipApplications.csv");

@@ -1,6 +1,7 @@
 package core;
 
 public class EvaluationResult {
+
     private final String applicantID;
     private final String name;
     private final String scholarshipType; // Merit, Need, Research

@@ -1,8 +1,8 @@
 package core;
 
 public class CourseGrade {
-    private char transcriptStatus;
-    private double gpa;
+    private final char transcriptStatus;
+    private final double gpa;
 
     public CourseGrade(char transcriptStatus, double gpa){
         this.transcriptStatus = transcriptStatus;
