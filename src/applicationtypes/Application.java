@@ -1,6 +1,5 @@
 package applicationtypes;
 
-import app.EvaluationMaster;
 import core.Applicant;
 import core.EvaluationResult;
 

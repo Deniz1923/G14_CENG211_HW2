@@ -1,10 +1,8 @@
 package applicationtypes;
 
 import app.EvaluationMaster;
-import com.sun.source.tree.MemberReferenceTree;
 import core.Applicant;
 import core.EvaluationResult;
-import evaluationtypes.MeritBasedEval;
 
 public class AcademicApplication extends Application {
 
