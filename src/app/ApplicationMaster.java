@@ -8,6 +8,9 @@ import core.Applicant;
 import core.CourseGrade;
 import core.Document;
 import core.Publication;
+import evaluationtypes.MeritBasedEval;
+import evaluationtypes.NeedBasedEval;
+import evaluationtypes.ResearchBasedEval;
 
 import java.util.ArrayList;
 
@@ -37,7 +40,6 @@ public class ApplicationMaster {
                     //A line : type,id,name,gpa,income
                     String id = information.get(1);
                     String name = information.get(2);
-                    double gpa = Double.parseDouble(information.get(3));
                     double income = Double.parseDouble(information.get(4));
 
                     Applicant applicant = new Applicant(id, name, income);
@@ -130,13 +132,13 @@ public class ApplicationMaster {
             // Determine application type based on ID prefix
             if (id.startsWith("11")) {
                 // Merit-based scholarship
-                app = new AcademicApplication(applicant);
+                app = new AcademicApplication(applicant, new MeritBasedEval());
             } else if (id.startsWith("22")) {
                 // Need-based scholarship
-                app = new FinancialApplication(applicant);
+                app = new FinancialApplication(applicant, new NeedBasedEval());
             } else if (id.startsWith("33")) {
                 // Research grant
-                app = new ResearchApplication(applicant);
+                app = new ResearchApplication(applicant, new ResearchBasedEval());
             }
 
             if (app != null) {

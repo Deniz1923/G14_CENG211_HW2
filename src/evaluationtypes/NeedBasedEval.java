@@ -22,7 +22,7 @@ public class NeedBasedEval extends EvaluationMaster {
      * @param applicant the applicant to evaluate
      * @param result the evaluation result object to update
      */
-    public void evaluate(Applicant applicant, EvaluationResult result) {
+    protected void evaluateSpecific(Applicant applicant, EvaluationResult result) {
         // Calculate monthly income from yearly family income
         double monthlyIncome = applicant.getFamilyIncome() / 12.0;
 
@@ -57,5 +57,10 @@ public class NeedBasedEval extends EvaluationMaster {
 
         // Duration is always 1 year for need-based scholarships
         result.setDuration("1 year");
+    }
+
+    @Override
+    public String getApplicationType() {
+        return "Need";
     }
 }

@@ -1,26 +1,24 @@
 package applicationtypes;
 
+import app.EvaluationMaster;
 import core.Applicant;
 import core.EvaluationResult;
 import evaluationtypes.ResearchBasedEval;
 
 public class ResearchApplication extends Application {
 
-    private final ResearchBasedEval evaluationStrategy;
-    public ResearchApplication(Applicant applicant) {
+    private final EvaluationMaster evaluationStrategy;
+    public ResearchApplication(Applicant applicant, EvaluationMaster strategy) {
         super(applicant);
-        this.result = new EvaluationResult(applicant.getStudentID(), applicant.getName(), "Research");
-        this.evaluationStrategy = new ResearchBasedEval();
+        this.evaluationStrategy = strategy;
     }
 
     @Override
     public void evaluate() {
-        // First check general requirements
-        if (!passesGeneralChecks()) {
-            return;
-        }
-
+        EvaluationResult result = new EvaluationResult(applicant.getStudentID(),
+                applicant.getName(), evaluationStrategy.getApplicationType());
         // Then perform research-specific evaluation
         evaluationStrategy.evaluate(applicant, result);
+        this.result = result;
     }
 }

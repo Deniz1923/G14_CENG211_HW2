@@ -1,26 +1,27 @@
 package applicationtypes;
 
+import app.EvaluationMaster;
 import com.sun.source.tree.MemberReferenceTree;
 import core.Applicant;
 import core.EvaluationResult;
 import evaluationtypes.MeritBasedEval;
 
 public class AcademicApplication extends Application {
-    MeritBasedEval evaluationStrategy;
-    public AcademicApplication(Applicant applicant) {
+
+    private final EvaluationMaster evaluationStrategy;
+
+    public AcademicApplication(Applicant applicant, EvaluationMaster strategy) {
         super(applicant);
-        this.result = new EvaluationResult(applicant.getStudentID(), applicant.getName(), "Merit");
-        this.evaluationStrategy = new MeritBasedEval();
+        this.evaluationStrategy = strategy;
     }
 
     @Override
     public void evaluate() {
-        // First check general requirements
-        if (!passesGeneralChecks()) {
-            return;
-        }
+        EvaluationResult result = new EvaluationResult(applicant.getStudentID(),
+                applicant.getName(), evaluationStrategy.getApplicationType());
 
         // Then perform merit-specific evaluation
         evaluationStrategy.evaluate(applicant, result);
+        this.result = result;
     }
 }

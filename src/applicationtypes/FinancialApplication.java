@@ -1,25 +1,24 @@
 package applicationtypes;
 
+import app.EvaluationMaster;
 import core.Applicant;
 import core.EvaluationResult;
 import evaluationtypes.NeedBasedEval;
 
 public class FinancialApplication extends Application {
-    private final NeedBasedEval evaluationStrategy;
-    public FinancialApplication(Applicant applicant) {
+    private final EvaluationMaster evaluationStrategy;
+    public FinancialApplication(Applicant applicant, EvaluationMaster strategy) {
         super(applicant);
-        this.result = new EvaluationResult(applicant.getStudentID(), applicant.getName(), "Need");
-        evaluationStrategy = new NeedBasedEval();
+        this.evaluationStrategy = strategy;
         }
 
     @Override
     public void evaluate() {
-        // First check general requirements
-        if (!passesGeneralChecks()) {
-            return;
-        }
+        EvaluationResult result = new EvaluationResult(applicant.getStudentID(),
+                applicant.getName(), evaluationStrategy.getApplicationType());
 
         // Then perform need-specific evaluation
         evaluationStrategy.evaluate(applicant, result);
+        this.result = result;
     }
 }

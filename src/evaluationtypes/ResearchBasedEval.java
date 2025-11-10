@@ -23,7 +23,7 @@ public class ResearchBasedEval extends EvaluationMaster {
      * @param applicant the applicant to evaluate
      * @param result the evaluation result object to update
      */
-    public void evaluate(Applicant applicant, EvaluationResult result) {
+    protected void evaluateSpecific(Applicant applicant, EvaluationResult result) {
         // Check if at least one publication or grant proposal exists
         boolean hasPublication = !applicant.getPublications().isEmpty();
         boolean hasGrantProposal = applicant.hasDocument("GRP");
@@ -78,5 +78,10 @@ public class ResearchBasedEval extends EvaluationMaster {
         } else {
             result.setDuration(baseDurationMonths + " months");
         }
+    }
+
+    @Override
+    public String getApplicationType() {
+        return "Research";
     }
 }
