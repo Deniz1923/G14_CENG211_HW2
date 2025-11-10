@@ -2,12 +2,12 @@ package core;
 
 public class EvaluationResult {
 
-    private final String applicantID;
+    private final String applicantID;     // XXXXXXXX
     private final String name;
     private final String scholarshipType; // Merit, Need, Research
-    private String status; // Accepted, Rejected
-    private String type; // Full, Half
-    private String duration; // "2 years", "1 year", "6 months"
+    private String status;                // Accepted, Rejected
+    private String type;                  // Full, Half
+    private String duration;              // "2 years", "1 year", "6 months"
     private String rejectionReason;
 
     public EvaluationResult(String applicantID, String name, String scholarshipType) {
@@ -16,10 +16,37 @@ public class EvaluationResult {
         this.scholarshipType = scholarshipType;
     }
 
+    /** Getters */
     public String getApplicantID() {
         return applicantID;
     }
 
+    public String getName() {
+        return name;
+    }
+
+    public String getScholarshipType() {
+        return scholarshipType;
+    }
+
+    public String getStatus() {
+        return status;
+    }
+
+    public String getType() {
+        return type;
+    }
+
+    public String getDuration() {
+        return duration;
+    }
+
+    public String getRejectionReason() {
+        return rejectionReason;
+    }
+
+
+    /** Setters */
     public void setStatus(String status) {
         this.status = status;
     }
@@ -35,6 +62,7 @@ public class EvaluationResult {
     public void setRejectionReason(String rejectionReason) {
         this.rejectionReason = rejectionReason;
     }
+
 
     @Override
     public String toString() {
