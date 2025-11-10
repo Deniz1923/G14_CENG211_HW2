@@ -5,11 +5,12 @@ import core.EvaluationResult;
 import evaluationtypes.NeedBasedEval;
 
 public class FinancialApplication extends Application {
-
+    private final NeedBasedEval evaluationStrategy;
     public FinancialApplication(Applicant applicant) {
         super(applicant);
         this.result = new EvaluationResult(applicant.getStudentID(), applicant.getName(), "Need");
-    }
+        evaluationStrategy = new NeedBasedEval();
+        }
 
     @Override
     public void evaluate() {
@@ -19,6 +20,6 @@ public class FinancialApplication extends Application {
         }
 
         // Then perform need-specific evaluation
-        NeedBasedEval.evaluate(applicant, result);
+        evaluationStrategy.evaluate(applicant, result);
     }
 }

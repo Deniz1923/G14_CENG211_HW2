@@ -1,5 +1,6 @@
 package evaluationtypes;
 
+import app.EvaluationMaster;
 import core.Applicant;
 import core.EvaluationResult;
 import core.Publication;
@@ -14,7 +15,7 @@ import core.Publication;
  * - If Research Supervisor Approval (RSV) exists → +1 year extension
  * - Base duration: Full → 1 year, Half → 6 months
  */
-public class ResearchBasedEval {
+public class ResearchBasedEval extends EvaluationMaster {
 
     /**
      * Evaluates a research grant application based on publications and impact factor.
@@ -22,7 +23,7 @@ public class ResearchBasedEval {
      * @param applicant the applicant to evaluate
      * @param result the evaluation result object to update
      */
-    public static void evaluate(Applicant applicant, EvaluationResult result) {
+    public void evaluate(Applicant applicant, EvaluationResult result) {
         // Check if at least one publication or grant proposal exists
         boolean hasPublication = !applicant.getPublications().isEmpty();
         boolean hasGrantProposal = applicant.hasDocument("GRP");

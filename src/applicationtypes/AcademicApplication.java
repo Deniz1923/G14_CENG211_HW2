@@ -1,14 +1,16 @@
 package applicationtypes;
 
+import com.sun.source.tree.MemberReferenceTree;
 import core.Applicant;
 import core.EvaluationResult;
 import evaluationtypes.MeritBasedEval;
 
 public class AcademicApplication extends Application {
-
+    MeritBasedEval evaluationStrategy;
     public AcademicApplication(Applicant applicant) {
         super(applicant);
         this.result = new EvaluationResult(applicant.getStudentID(), applicant.getName(), "Merit");
+        this.evaluationStrategy = new MeritBasedEval();
     }
 
     @Override
@@ -19,6 +21,6 @@ public class AcademicApplication extends Application {
         }
 
         // Then perform merit-specific evaluation
-        MeritBasedEval.evaluate(applicant, result);
+        evaluationStrategy.evaluate(applicant, result);
     }
 }

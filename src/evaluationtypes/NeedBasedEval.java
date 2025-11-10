@@ -1,5 +1,6 @@
 package evaluationtypes;
 
+import app.EvaluationMaster;
 import core.Applicant;
 import core.EvaluationResult;
 
@@ -13,7 +14,7 @@ import core.EvaluationResult;
  * - If 3+ dependents → thresholds increase by additional 10%
  * - Duration: 1 year
  */
-public class NeedBasedEval {
+public class NeedBasedEval extends EvaluationMaster {
 
     /**
      * Evaluates a need-based scholarship application based on family income.
@@ -21,7 +22,7 @@ public class NeedBasedEval {
      * @param applicant the applicant to evaluate
      * @param result the evaluation result object to update
      */
-    public static void evaluate(Applicant applicant, EvaluationResult result) {
+    public void evaluate(Applicant applicant, EvaluationResult result) {
         // Calculate monthly income from yearly family income
         double monthlyIncome = applicant.getFamilyIncome() / 12.0;
 

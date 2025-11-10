@@ -1,5 +1,6 @@
 package evaluationtypes;
 
+import app.EvaluationMaster;
 import core.Applicant;
 import core.EvaluationResult;
 
@@ -11,7 +12,7 @@ import core.EvaluationResult;
  * - GPA < 3.00 → Rejected
  * - If Recommendation Letter (REC) exists → 2 years, otherwise 1 year
  */
-public class MeritBasedEval {
+public abstract class MeritBasedEval extends EvaluationMaster {
 
     /**
      * Evaluates a merit-based scholarship application based on GPA.
@@ -19,7 +20,7 @@ public class MeritBasedEval {
      * @param applicant the applicant to evaluate
      * @param result the evaluation result object to update
      */
-    public static void evaluate(Applicant applicant, EvaluationResult result) {
+    public void evaluate(Applicant applicant, EvaluationResult result) {
         double gpa = applicant.getCourseGrade().getGpa();
 
         // Determine scholarship type based on GPA
