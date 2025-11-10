@@ -8,6 +8,7 @@ public class Document {
         this.documentType = documentType;
         this.durationInMonths = durationInMonths;
     }
+
     //String is immutable and int is primitive(returned by value) so no security leaks
     public String getDocumentType(){
         return documentType;

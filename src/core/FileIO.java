@@ -3,9 +3,11 @@ package core;
 import java.io.BufferedReader;
 import java.io.FileInputStream;
 import java.io.IOException;
+import java.io.FileNotFoundException;
 import java.io.InputStreamReader;
 import java.util.ArrayList;
 import java.util.Arrays;
+
 
 public class FileIO {
 
@@ -24,8 +26,7 @@ public class FileIO {
 
         ArrayList<ArrayList<String>> listOfLists = new ArrayList<>();
 
-        try (BufferedReader br = new BufferedReader(new InputStreamReader(new FileInputStream(applicationsPath))))
-        {
+        try (BufferedReader br = new BufferedReader(new InputStreamReader(new FileInputStream(applicationsPath)))) {
             String line;
             while((line = br.readLine()) != null){
                 String[] fields = line.split(delimiter);
@@ -33,6 +34,10 @@ public class FileIO {
                 listOfLists.add(insideTheRow);
             }
             return listOfLists;
+        } catch (FileNotFoundException e) {
+            throw new IOException("File not found: " + applicationsPath, e);
+        } catch (IOException e) {
+            throw new IOException("Error reading file: " + applicationsPath, e);
         }
     }
 

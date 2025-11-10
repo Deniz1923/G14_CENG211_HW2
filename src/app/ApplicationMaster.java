@@ -14,14 +14,32 @@ import evaluationtypes.ResearchBasedEval;
 
 import java.util.ArrayList;
 
+/**
+ * Manages the processing of applicant data and creation of scholarship/grant applications.
+ * This class parses raw input data, creates applicant records, and generates appropriate
+ * application objects based on applicant IDs.
+ */
 public class ApplicationMaster {
+
     private final ArrayList<Applicant> applicants;
 
+    /**
+     * Constructs an ApplicationMaster and processes the provided raw input data.
+     *
+     * @param rawInput a list of string arrays where each array represents a line of applicant data
+     *                 with the first element indicating the data type (A, T, I, D, or P)
+     */
     public ApplicationMaster(ArrayList<ArrayList<String>> rawInput){
         this.applicants = new ArrayList<>();
         processRawInput(rawInput);
     }
 
+    /**
+     * Finds an applicant by their student ID.
+     *
+     * @param studentID the unique identifier for the student
+     * @return the Applicant object if found, null otherwise
+     */
     private Applicant findApplicantByID(String studentID){
         for (Applicant applicant : this.applicants){
             if(applicant.getStudentID().equals(studentID)){
@@ -31,6 +49,19 @@ public class ApplicationMaster {
         return null;
     }
 
+    /**
+     * Processes raw input data in two passes: first creating all Applicant objects,
+     * then enriching them with additional information (transcripts, documents, etc.).
+     * Supported data types:
+     *
+     *   <li>A (Applicant): type, id, name, gpa, income</li>
+     *   <li>T (Transcript): type, applicantID, transcriptStatus (Y/N)</li>
+     *   <li>I (Income): type, applicantID, familyIncome, dependents</li>
+     *   <li>D (Document): type, applicantID, documentType, durationInMonths</li>
+     *   <li>P (Publication): type, applicantID, title, impactFactor</li>
+     *
+     * @param rawInput a list of string arrays containing applicant information
+     */
     private void processRawInput(ArrayList<ArrayList<String>> rawInput){
         // First pass: Create all Applicant objects from 'A' lines
         for(ArrayList<String> information: rawInput){
@@ -122,6 +153,15 @@ public class ApplicationMaster {
         }
     }
 
+    /**
+     * Creates Application objects for all processed applicants based on their student ID prefixes.
+     * Application routing:
+     *   <li>IDs starting with "11": AcademicApplication with MeritBasedEval</li>
+     *   <li>IDs starting with "22": FinancialApplication with NeedBasedEval</li>
+     *   <li>IDs starting with "33": ResearchApplication with ResearchBasedEval</li>
+     *
+     * @return an ArrayList of Application objects for all eligible applicants
+     */
     public ArrayList<Application> createApplications() {
         ArrayList<Application> applications = new ArrayList<>();
 
