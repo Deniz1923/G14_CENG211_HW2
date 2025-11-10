@@ -8,7 +8,9 @@ import java.util.Comparator;
 /** Implements Scholarship Evaluation System according to Specifications in the PDF */
 public class ScholarshipEvalSystem {
     public static void main(String[] args) throws IOException {
-        //relative path to the resources folder, iteration through each resource can be implemented in the future if necessary
+
+        // Relative path to the resources folder,
+        // iteration through each resource can be implemented in the future if necessary
         FileIO io = new FileIO("src/resources/ScholarshipApplications.csv");
 
         ApplicationMaster master = new ApplicationMaster(io.getApplicationsData());
@@ -17,7 +19,8 @@ public class ScholarshipEvalSystem {
         for (Application app : applications) {
             app.evaluate();
         }
-        //sorting the applicants by ID
+
+        // Sorting the applicants by ID
         applications.sort(Comparator.comparing(a -> a.getResult().getApplicantID()));
 
         for (Application app : applications) {
