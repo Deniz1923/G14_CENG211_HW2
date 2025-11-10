@@ -1,8 +1,8 @@
 package core;
 
 public class Document {
-    private String documentType;
-    private int durationInMonths;
+    private final String documentType;
+    private final int durationInMonths;
 
     public Document(String documentType, int durationInMonths){
         this.documentType = documentType;
