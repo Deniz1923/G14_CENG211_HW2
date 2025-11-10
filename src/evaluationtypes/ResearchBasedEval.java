@@ -1,6 +1,5 @@
 package evaluationtypes;
 
-import app.EvaluationMaster;
 import core.Applicant;
 import core.EvaluationResult;
 import core.Publication;
@@ -15,7 +14,7 @@ import core.Publication;
  * - If Research Supervisor Approval (RSV) exists → +1 year extension
  * - Base duration: Full → 1 year, Half → 6 months
  */
-public class ResearchBasedEval extends EvaluationMaster {
+public class ResearchBasedEval extends Evaluation {
 
     /**
      * Evaluates a research grant application based on publications and impact factor.

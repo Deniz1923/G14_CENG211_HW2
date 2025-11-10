@@ -1,14 +1,14 @@
 package applicationtypes;
 
-import app.EvaluationMaster;
+import evaluationtypes.Evaluation;
 import core.Applicant;
 import core.EvaluationResult;
 
 public class AcademicApplication extends Application {
 
-    private final EvaluationMaster evaluationStrategy;
+    private final Evaluation evaluationStrategy;
 
-    public AcademicApplication(Applicant applicant, EvaluationMaster strategy) {
+    public AcademicApplication(Applicant applicant, Evaluation strategy) {
         super(applicant);
         this.evaluationStrategy = strategy;
     }

@@ -1,6 +1,5 @@
 package evaluationtypes;
 
-import app.EvaluationMaster;
 import core.Applicant;
 import core.EvaluationResult;
 
@@ -14,7 +13,7 @@ import core.EvaluationResult;
  * - If 3+ dependents → thresholds increase by additional 10%
  * - Duration: 1 year
  */
-public class NeedBasedEval extends EvaluationMaster {
+public class NeedBasedEval extends Evaluation {
 
     /**
      * Evaluates a need-based scholarship application based on family income.

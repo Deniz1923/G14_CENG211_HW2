@@ -1,6 +1,5 @@
 package evaluationtypes;
 
-import app.EvaluationMaster;
 import core.Applicant;
 import core.EvaluationResult;
 
@@ -12,7 +11,7 @@ import core.EvaluationResult;
  * - GPA < 3.00 → Rejected
  * - If Recommendation Letter (REC) exists → 2 years, otherwise 1 year
  */
-public class MeritBasedEval extends EvaluationMaster {
+public class MeritBasedEval extends Evaluation {
 
     /**
      * Evaluates a merit-based scholarship application based on GPA.

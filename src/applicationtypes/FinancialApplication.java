@@ -1,12 +1,12 @@
 package applicationtypes;
 
-import app.EvaluationMaster;
+import evaluationtypes.Evaluation;
 import core.Applicant;
 import core.EvaluationResult;
 
 public class FinancialApplication extends Application {
-    private final EvaluationMaster evaluationStrategy;
-    public FinancialApplication(Applicant applicant, EvaluationMaster strategy) {
+    private final Evaluation evaluationStrategy;
+    public FinancialApplication(Applicant applicant, Evaluation strategy) {
         super(applicant);
         this.evaluationStrategy = strategy;
         }
