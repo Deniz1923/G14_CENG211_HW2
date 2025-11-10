@@ -18,15 +18,11 @@ public class ScholarshipEvalSystem {
             app.evaluate();
         }
         //sorting the applicants by ID
-        applications.sort(new Comparator<>() {
-            @Override
-            public int compare(Application a1, Application a2) {
-                return a1.getResult().getApplicantID().compareTo(a2.getResult().getApplicantID());
-            }
-        });
+        applications.sort(Comparator.comparing(a -> a.getResult().getApplicantID()));
 
         for (Application app : applications) {
             System.out.println(app.toString());
         }
     }
 }
+
