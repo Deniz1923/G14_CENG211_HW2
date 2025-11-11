@@ -8,12 +8,25 @@ import java.io.InputStreamReader;
 import java.util.ArrayList;
 import java.util.Arrays;
 
-
+/**
+ * Reads a CSV file that is packaged on the class‑path (e.g. under src/resources)
+ * and exposes its content as an {@link ArrayList} of rows.
+ */
 public class FileIO {
 
-    private String applicationsPath;
+    private final String applicationsPath;
+
+    /**
+     * Parsed CSV data – each inner list represents one row.
+     * The outer list is immutable after construction.
+     */
     private final ArrayList<ArrayList<String>> applicationsData;
 
+    /**
+     * Loads the CSV file from the class‑path.
+     * @param applicationsPath relative path on the class‑path
+     * @throws IOException if the resource is missing or unreadable
+     */
     public FileIO(String applicationsPath) throws IOException {
         this.applicationsPath = applicationsPath;
         this.applicationsData = loadApplications(applicationsPath);
@@ -41,15 +54,17 @@ public class FileIO {
         return listOfLists;
     }
 
-    public ArrayList<ArrayList<String>> getApplicationsData(){
-        return applicationsData;
+    /**
+     * @return a shallow copy of the parsed data. The outer list is new,
+     * but inner lists remain mutable (no external code modifies them in this project).
+     */
+    public ArrayList<ArrayList<String>> getApplicationsData() {
+        return new ArrayList<>(applicationsData);
     }
 
+    /** @return the original path supplied to the constructor. */
     public String getApplicationsPath() {
         return applicationsPath;
     }
 
-    public void setApplicationsPath(String applicationsPath) {
-        this.applicationsPath = applicationsPath;
-    }
 }
