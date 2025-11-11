@@ -33,12 +33,12 @@ public class FileIO {
                 ArrayList<String> insideTheRow = new ArrayList<>(Arrays.asList(fields));
                 listOfLists.add(insideTheRow);
             }
-            return listOfLists;
         } catch (FileNotFoundException e) {
             throw new IOException("File not found: " + applicationsPath, e);
         } catch (IOException e) {
             throw new IOException("Error reading file: " + applicationsPath, e);
         }
+        return listOfLists;
     }
 
     public ArrayList<ArrayList<String>> getApplicationsData(){

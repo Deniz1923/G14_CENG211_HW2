@@ -26,8 +26,11 @@ public class AcademicApplication extends Application {
     @Override
     public void evaluate() {
         // Create result object with basic information
-        EvaluationResult result = new EvaluationResult(applicant.getStudentID(),
-                applicant.getName(), evaluationStrategy.getApplicationType());
+        EvaluationResult result = new EvaluationResult(
+                applicant.getStudentID(),
+                applicant.getName(),
+                evaluationStrategy.getApplicationType()
+        );
 
         // Perform specific evaluation using strategy pattern
         evaluationStrategy.evaluate(applicant, result);
