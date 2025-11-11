@@ -8,7 +8,7 @@ import core.EvaluationResult;
  * Provides common functionality for evaluating different scholarship applications.
  */
 abstract public class Application {
-    protected Applicant applicant;
+    protected final Applicant applicant;
     protected EvaluationResult result;
 
     /**
