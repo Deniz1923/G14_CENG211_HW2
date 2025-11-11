@@ -23,6 +23,7 @@ public class ResearchBasedEval extends Evaluation {
      * @param result the evaluation result object to update
      */
     protected void evaluateSpecific(Applicant applicant, EvaluationResult result) {
+
         // Check if at least one publication or grant proposal exists
         boolean hasPublication = !applicant.getPublications().isEmpty();
         boolean hasGrantProposal = applicant.hasDocument("GRP");

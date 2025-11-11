@@ -93,7 +93,7 @@ public class Applicant {
     /**
      * Checks whether a document of the given type is attached.
      *
-     * @param documentType e.g. “ENR”, “REC”, “SAV”
+     * @param documentType which are “ENR”, “REC”, “SAV”, "RSV", "GRP"
      * @return {@code true} if at least one matching document exists
      */
     public boolean hasDocument(String documentType) {

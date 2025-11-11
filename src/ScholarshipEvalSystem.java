@@ -9,8 +9,7 @@ import java.util.Comparator;
 public class ScholarshipEvalSystem {
     public static void main(String[] args) throws IOException {
 
-        // Relative path to the resources folder,
-        // iteration through each resource can be implemented in the future if necessary
+        // Relative path to the resources folder
         FileIO io = new FileIO("src/resources/ScholarshipApplications.csv");
 
         ApplicationMaster master = new ApplicationMaster(io.getApplicationsData());
