@@ -63,7 +63,7 @@ public class EvaluationResult {
         this.rejectionReason = rejectionReason;
     }
 
-
+    /** Used for the Final Output String, Important ! */
     @Override
     public String toString() {
         StringBuilder result = new StringBuilder();
