@@ -34,6 +34,34 @@ public class Applicant {
         this.publications = new ArrayList<>();
     }
 
+    /**
+     * Creates a deep copy of another Applicant.
+     * Used for defensive copying by other classes.
+     */
+    public Applicant(Applicant other) {
+        // Copy all primitive and immutable fields
+        this.studentID = other.studentID;
+        this.name = other.name;
+        this.initialIncome = other.initialIncome;
+        this.familyIncome = other.familyIncome;
+        this.transcriptApproval = other.transcriptApproval;
+        this.dependents = other.dependents;
+
+        // No new is needed since CourseGrade is immutable
+        this.courseGrade = other.courseGrade;
+
+        // Create new lists and deep copy the contents
+        this.documents = new ArrayList<>();
+        for (Document doc : other.documents) {
+            this.documents.add(new Document(doc));
+        }
+
+        this.publications = new ArrayList<>();
+        for (Publication pub : other.publications) {
+            this.publications.add(new Publication(pub));
+        }
+    }
+
     public String getStudentID() { return studentID; }
     public String getName() { return name; }
     public double getInitialIncome() { return initialIncome; }
@@ -42,11 +70,31 @@ public class Applicant {
     public int getDependents() { return dependents; }
     public CourseGrade getCourseGrade() { return courseGrade; }
 
-    /** Returns a copy of the documents list */
-    public ArrayList<Document> getDocuments() { return new ArrayList<>(documents); }
+    /** Returns a deep copy of the documents list */
+    public ArrayList<Document> getDocuments() {
+        // Create the new list to be returned
+        ArrayList<Document> deepCopy = new ArrayList<>();
 
-    /** Returns a copy of the publications list */
-    public ArrayList<Publication> getPublications() { return new ArrayList<>(publications); }
+        // Iterate and add new, copied Document objects
+        for (Document document : this.documents) {
+            // Using the copy constructor
+            deepCopy.add(new Document(document));
+        }
+        return deepCopy;
+    }
+
+    /** Returns a deep copy of the publications list */
+    public ArrayList<Publication> getPublications() {
+        // Create the new list to be returned
+        ArrayList<Publication> deepCopy = new ArrayList<>();
+
+        // Iterate and add new, copied Publication objects
+        for (Publication publication : this.publications) {
+            // Use the copy constructor
+            deepCopy.add(new Publication(publication));
+        }
+        return deepCopy;
+    }
 
     public void setCourseGrade(CourseGrade courseGrade) { this.courseGrade = courseGrade; }
 
@@ -76,7 +124,8 @@ public class Applicant {
         if (doc == null) {
             throw new IllegalArgumentException("Document cannot be null");
         }
-        documents.add(doc);
+        //defensive copy
+        documents.add(new Document(doc));
     }
 
     /**
@@ -87,7 +136,8 @@ public class Applicant {
         if (pub == null) {
             throw new IllegalArgumentException("Publication cannot be null");
         }
-        publications.add(pub);
+        //defensive copy
+        publications.add(new Publication(pub));
     }
 
     /**

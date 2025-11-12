@@ -16,6 +16,20 @@ public class EvaluationResult {
         this.scholarshipType = scholarshipType;
     }
 
+    /**
+     * Creates a deep copy of another EvaluationResult object.
+     * @param other The EvaluationResult to copy.
+     */
+    public EvaluationResult(EvaluationResult other) {
+        this.name = other.name;
+        this.scholarshipType = other.scholarshipType;
+        this.applicantID = other.applicantID;
+        this.status = other.status;
+        this.type = other.type;
+        this.duration = other.duration;
+        this.rejectionReason = other.rejectionReason;
+    }
+
     /** Getters */
     public String getApplicantID() {
         return applicantID;

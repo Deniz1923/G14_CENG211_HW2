@@ -9,6 +9,15 @@ public class Publication {
         this.impactFactor = impactFactor;
     }
 
+    /**
+     * Creates a deep copy of another Publication object.
+     * @param other The Publication to copy.
+     */
+    public Publication(Publication other) {
+        this.name = other.name;
+        this.impactFactor = other.impactFactor;
+    }
+
     public String getName(){
         return name;
     }

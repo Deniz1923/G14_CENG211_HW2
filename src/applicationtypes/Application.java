@@ -16,12 +16,13 @@ abstract public class Application {
      * @param applicant The applicant associated with this application
      */
     public Application(Applicant applicant) {
-        this.applicant = applicant;
+        this.applicant = new Applicant(applicant);
+
     }
 
     /**
      * Evaluates the application according to its specific type.
-     * This method should be implemented by subclasses.
+     * This method is implemented by subclasses.
      */
     public abstract void evaluate();
 
@@ -39,6 +40,6 @@ abstract public class Application {
      * @return The evaluation result
      */
     public EvaluationResult getResult() {
-        return result;
+        return new EvaluationResult(this.result);
     }
 }
