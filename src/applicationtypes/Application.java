@@ -28,7 +28,7 @@ abstract public class Application {
 
     /**
      * Returns string representation of the evaluation result.
-     * @return String representation of the evaluation result
+     * @return {@link String} representation of the evaluation result
      */
     @Override
     public String toString() {

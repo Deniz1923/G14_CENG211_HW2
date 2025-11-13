@@ -25,7 +25,5 @@ public class ScholarshipEvalSystem {
         for (Application app : applications) {
             System.out.println(app.toString());
         }
-        //zart  dasda
     }
 }
-
