@@ -27,7 +27,7 @@ public abstract class Evaluation{
 
     /**
      * Performs the specific evaluation logic for a particular application type.
-     * This method should be implemented by subclasses.
+     * This method should be implemented by subclasses accordingly.
      * @param applicant The applicant to evaluate
      * @param result The evaluation result object to update
      */

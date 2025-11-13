@@ -30,7 +30,8 @@ public class EvaluationResult {
         this.rejectionReason = other.rejectionReason;
     }
 
-    /** Getters */
+    // Getters
+
     public String getApplicantID() {
         return applicantID;
     }
@@ -60,7 +61,8 @@ public class EvaluationResult {
     }
 
 
-    /** Setters */
+    // Setters
+
     public void setStatus(String status) {
         this.status = status;
     }

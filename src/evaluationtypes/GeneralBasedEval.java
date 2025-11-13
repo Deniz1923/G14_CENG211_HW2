@@ -7,7 +7,7 @@ import core.EvaluationResult;
  * Handles general eligibility checks that apply to all scholarship types.
  * These checks must pass before specific scholarship criteria are evaluated.
  */
-public class GeneralBasedEval {
+public class GeneralBasedEval extends Evaluation{
 
     /**
      * Performs general eligibility checks for any scholarship application.
@@ -51,5 +51,15 @@ public class GeneralBasedEval {
         }
 
         return true;
+    }
+
+    @Override
+    protected void evaluateSpecific(Applicant applicant, EvaluationResult result) {
+        passesGeneralChecks(applicant,result);
+    }
+
+    @Override
+    public String getApplicationType() {
+        return "General";
     }
 }
