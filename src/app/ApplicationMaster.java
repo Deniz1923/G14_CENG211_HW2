@@ -149,7 +149,8 @@ public class ApplicationMaster {
                 }
             }
 
-            // It is valid ? Since Java 7 it separates multiple exception types in a union for a single catch block ?
+            // It is valid ?
+            // Supposedly Since Java 7 it separates multiple exception types in a union for a single catch block ?
             catch (NumberFormatException | IndexOutOfBoundsException e) {
                 System.err.println("Error processing '" + type + "' line for ID " + id + ". Skipping.");
             }
