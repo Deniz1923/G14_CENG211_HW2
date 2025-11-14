@@ -55,7 +55,7 @@ public class GeneralBasedEval extends Evaluation{
 
     @Override
     protected void evaluateSpecific(Applicant applicant, EvaluationResult result) {
-        passesGeneralChecks(applicant,result);
+        // Superclass invokes anyway, redundant
     }
 
     @Override

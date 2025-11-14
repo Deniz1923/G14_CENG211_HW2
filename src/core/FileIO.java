@@ -42,6 +42,9 @@ public class FileIO {
         try (BufferedReader br = new BufferedReader(new InputStreamReader(new FileInputStream(applicationsPath)))) {
             String line;
             while((line = br.readLine()) != null){
+
+                if (line.trim().isEmpty()) continue;
+
                 String[] fields = line.split(delimiter);
                 ArrayList<String> insideTheRow = new ArrayList<>(Arrays.asList(fields));
                 listOfLists.add(insideTheRow);
@@ -51,6 +54,7 @@ public class FileIO {
         } catch (IOException e) {
             throw new IOException("Error reading file: " + applicationsPath, e);
         }
+
         return listOfLists;
     }
 
