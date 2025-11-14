@@ -22,8 +22,7 @@ public class NeedBasedEval extends Evaluation {
      * @param result the evaluation result object to update
      */
     protected void evaluateSpecific(Applicant applicant, EvaluationResult result) {
-        // Calculate monthly income from yearly family income
-        double monthlyIncome = applicant.getFamilyIncome() / 12.0;
+        double monthlyIncome = applicant.getFamilyIncome();
 
         // Base thresholds
         double fullThreshold = 10000;
