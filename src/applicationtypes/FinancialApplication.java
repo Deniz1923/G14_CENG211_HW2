@@ -1,8 +1,8 @@
 package applicationtypes;
 
-import evaluationtypes.Evaluation;
 import core.Applicant;
 import core.EvaluationResult;
+import evaluationtypes.Evaluation;
 
 /**
  * Represents a financial need-based scholarship application.

@@ -1,7 +1,7 @@
 package app;
 
-import applicationtypes.Application;
 import applicationtypes.AcademicApplication;
+import applicationtypes.Application;
 import applicationtypes.FinancialApplication;
 import applicationtypes.ResearchApplication;
 import core.Applicant;
@@ -11,7 +11,6 @@ import core.Publication;
 import evaluationtypes.MeritBasedEval;
 import evaluationtypes.NeedBasedEval;
 import evaluationtypes.ResearchBasedEval;
-
 import java.util.ArrayList;
 
 /**

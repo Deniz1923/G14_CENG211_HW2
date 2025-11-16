@@ -1,8 +1,8 @@
 package applicationtypes;
 
-import evaluationtypes.Evaluation;
 import core.Applicant;
 import core.EvaluationResult;
+import evaluationtypes.Evaluation;
 
 /**
  * Represents an academic (merit-based) scholarship application.
