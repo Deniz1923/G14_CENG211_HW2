@@ -22,6 +22,7 @@ public class GeneralBasedEval extends Evaluation{
      * @return true if all general checks pass, false otherwise
      */
     public static boolean passesGeneralChecks(Applicant applicant, EvaluationResult result) {
+
         // Priority 1: Missing Enrollment Certificate
         if (!applicant.hasDocument("ENR")) {
             result.setStatus("Rejected");
@@ -29,8 +30,9 @@ public class GeneralBasedEval extends Evaluation{
             return false;
         }
 
-        // Priority 2: Missing Transcript
-        if (applicant.getCourseGrade() == null) {
+        // Priority 2: Missing Transcript (missing OR not approved)
+        if (applicant.getCourseGrade() == null ||
+                applicant.getCourseGrade().getTranscriptStatus() != 'Y') {
             result.setStatus("Rejected");
             result.setRejectionReason("Missing Transcript");
             return false;
@@ -40,13 +42,6 @@ public class GeneralBasedEval extends Evaluation{
         if (applicant.getCourseGrade().getGpa() < 2.50) {
             result.setStatus("Rejected");
             result.setRejectionReason("GPA below 2.5");
-            return false;
-        }
-
-        // Check transcript approval (Y/N status)
-        if (!applicant.isTranscriptApproved()) {
-            result.setStatus("Rejected");
-            result.setRejectionReason("Transcript not approved");
             return false;
         }
 
