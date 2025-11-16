@@ -22,11 +22,13 @@ public class NeedBasedEval extends Evaluation {
      * @param result the evaluation result object to update
      */
     protected void evaluateSpecific(Applicant applicant, EvaluationResult result) {
+
         double monthlyIncome = applicant.getFamilyIncome();
 
         // Base thresholds
-        double fullThreshold = 10000;
-        double halfThreshold = 15000;
+        double fullThreshold = 10000.0;
+        double halfThreshold = 15000.0;
+
 
         // Adjust thresholds if savings document exists (20% increase)
         if (applicant.hasDocument("SAV")) {
