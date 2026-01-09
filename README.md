@@ -1,46 +1,132 @@
 # 🎓 Scholarship Evaluation System (Java)
 
-[cite_start]Bu proje, bir üniversitenin burs komitesinin karar süreçlerini otomatize eden bir Java uygulamasıdır. [cite: 3, 16] [cite_start]Nesne yönelimli programlama (OOP) prensipleri kullanılarak farklı burs türleri değerlendirilir. [cite: 3]
+Bu proje, bir üniversitenin burs komitesinin farklı kriterlere dayalı başvuru değerlendirme süreçlerini otomatize eden bir Java uygulamasıdır. Sistem; akademik başarı, finansal ihtiyaç ve bilimsel araştırma dallarını kapsayan nesne yönelimli (OOP) bir mimari üzerine kurulmuştur.
 
 ---
 
-### 🌟 Temel Özellikler
+### 🌟 Uygulanan OOP Kavramları
 
-* [cite_start]**🏗️ OOP Mimari:** Kalıtım (Inheritance), Çok Biçimlilik (Polymorphism) ve Array List yapıları üzerine inşa edilmiştir. [cite: 3, 5, 6, 8]
-* [cite_start]**📄 CSV Veri Yönetimi:** `ScholarshipApplications.csv` dosyasındaki verileri Applicant ID üzerinden eşleştirerek işler. [cite: 20, 21, 22]
-* [cite_start]**⚖️ Esnek Değerlendirme:** Farklı başvuru türleri için genel bir "Application" framework'ü sunar. [cite: 18, 19]
-* [cite_start]**📊 Düzenli Raporlama:** Sonuçları Applicant ID'ye göre sıralı bir şekilde yazdırır. [cite: 73]
-
----
-
-### 🎓 Burs Türleri ve Kriterleri
+* 
+**Kalıtım (Inheritance):** Farklı burs türleri için ortak bir uygulama iskeleti (Application Framework) oluşturulmuştur.
 
 
+* 
+**Çok Biçimlilik (Polymorphism):** Farklı değerlendirme kuralları tek bir çatı altında yönetilir.
 
-| Burs Türü | ID Ön Eki | Odak Noktası | Temel Kriterler |
-| :--- | :---: | :--- | :--- |
-| **Merit-based** | `11` | [cite_start]Akademik Başarı [cite: 12] | [cite_start]GPA 3.20+ (Full), 3.00+ (Half) [cite: 39, 40] |
-| **Need-based** | `22` | [cite_start]Finansal İhtiyaç [cite: 13] | [cite_start]Aylık Gelir & Bağımlı Sayısı [cite: 46, 47, 50] |
-| **Research Grant** | `33` | [cite_start]Bilimsel Katkı [cite: 14] | [cite_start]Yayın Etki Faktörü (Impact Factor) [cite: 55, 56] |
 
-> [cite_start]**Genel Şartlar:** Tüm başvurular için GPA ≥ 2.50, Geçerli Transkript (Y) ve Kayıt Belgesi (ENR) zorunludur. [cite: 34, 35, 36]
+* 
+**Koleksiyonlar (Array Lists):** Başvuru verileri dinamik listelerde depolanır ve işlenir.
+
+
+* 
+**Dosya İşleme (CSV File I/O):** Veriler `ScholarshipApplications.csv` dosyasından okunur.
+
+
 
 ---
 
-### 🚀 Kullanım Rehberi
+### 🎓 Burs Türleri ve Değerlendirme Kuralları
 
-1.  [cite_start]**Bağımlılıklar:** Standart `java.io` paketlerini kullanır, harici kütüphane gerektirmez. [cite: 75]
-2.  [cite_start]**Dosya Yolu:** CSV dosyası için `Files/sample.csv` gibi göreceli yollar kullanılmalıdır. [cite: 76]
-3.  [cite_start]**Türkçe Karakter:** Proje kodlamasının **UTF8** olduğundan emin olun. [cite: 78]
-4.  **Derleme ve Çalıştırma:**
+| Burs Türü | ID Ön Eki | Değerlendirme Odağı |
+| --- | --- | --- |
+| **Merit-based** | 11 | Akademik başarı ve tavsiye mektupları.
+
+ |
+| **Need-based** | 22 | Aile geliri ve bakmakla yükümlü olunan kişi sayısı.
+
+ |
+| **Research Grant** | 33 | Bilimsel yayınlar ve danışman onayları.
+
+ |
+
+#### **Genel Red Sebepleri (Öncelik Sırasıyla)**
+
+1. Öğrenci Belgesi (ENR) eksikliği.
+
+
+2. Geçerli Transkript (Y) bulunmaması.
+
+
+3. Genel not ortalamasının (GPA) 2.50'den düşük olması.
+
+
+4. Zorunlu belgelerin eksik olması.
+
+
+
+---
+
+### 📂 Proje Yapısı ve Dosyalar
+
+* 
+**Giriş Dosyası:** `ScholarshipApplications.csv` (Başvuru bilgilerini içeren ana dosya).
+
+
+* **Zorunlu Belgeler:**
+* 
+`ENR`: Öğrenci Belgesi (Tüm adaylar için zorunlu).
+
+
+* 
+`REC`: Tavsiye Mektubu (Merit-based için duration artırır).
+
+
+* 
+`SAV`: Tasarruf Belgesi (Need-based için eşik değerlerini artırır).
+
+
+* 
+`RSV` / `GRP`: Araştırma Onayı ve Önerisi (Research Grant için gereklidir).
+
+
+
+
+
+---
+
+### 🚀 Çalıştırma ve Kullanım
+
+1. 
+**Derleme:** Standart `java.io` paketleri kullanıldığından harici kütüphane gerekmez.
+
+
+2. 
+**Dosya Yolu:** Veri dosyası için `Files/sample.csv` gibi göreceli yollar kullanılmalıdır.
+
+
+3. 
+**Karakter Seti:** Türkçe karakter desteği için proje kodlaması **UTF-8** olarak ayarlanmalıdır.
+
+
+4. 
+**Sıralama:** Çıktılar **Applicant ID**'ye göre sıralı olarak yazdırılır.
+
+
 
 ```bash
+# Projeyi derlemek için
 javac *.java
+
+# Projeyi çalıştırmak için
 java Main
 
-📝 Örnek Çıktı Formatı
-Plaintext
+```
 
-Applicant ID: 1101, Name: Liam Smith, Scholarship: Merit, Status: Accepted, Type: Full, Duration: 2 years [cite: 71]
-Applicant ID: 1120, Name: Oliver Brown, Scholarship: Merit, Status: Rejected, Reason: GPA below 3.0 [cite: 73]
-[!IMPORTANT] Bu uygulama CENG211 Programming Fundamentals ödevi kapsamında geliştirilmiştir.
+---
+
+### 📝 Örnek Çıktı
+
+```text
+Applicant ID: 1101, Name: Liam Smith, Scholarship: Merit, Status: Accepted, Type: Full, Duration: 2 years
+Applicant ID: 1114, Name: Ava Johnson, Scholarship: Merit, Status: Accepted, Type: Half, Duration: 1 year
+Applicant ID: 1120, Name: Oliver Brown, Scholarship: Merit, Status: Rejected, Reason: GPA below 3.0
+
+```
+
+---
+
+> [!IMPORTANT]
+> Bu proje **CENG211 Homework #2** kapsamında geliştirilmiştir. Teslim formatı `G05_CENG211_HW2` kuralına uygundur.
+> 
+> 
+
