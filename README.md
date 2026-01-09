@@ -121,12 +121,3 @@ Applicant ID: 1101, Name: Liam Smith, Scholarship: Merit, Status: Accepted, Type
 Applicant ID: 1114, Name: Ava Johnson, Scholarship: Merit, Status: Accepted, Type: Half, Duration: 1 year
 Applicant ID: 1120, Name: Oliver Brown, Scholarship: Merit, Status: Rejected, Reason: GPA below 3.0
 
-```
-
----
-
-> [!IMPORTANT]
-> Bu proje **CENG211 Homework #2** kapsamında geliştirilmiştir. Teslim formatı `G05_CENG211_HW2` kuralına uygundur.
-> 
-> 
-
